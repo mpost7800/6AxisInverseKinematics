@@ -1,2 +1,2 @@
 # 6AxisInverseKinematics
-This is a program made in Arduino IDE to make a 6 axis robotic arm move with coordinates with ease!!!
+This is a program made in Arduino IDE to make a 6 axis robotic arm move with coordinates with ease!!! With this program that I have made, (thanks to Thomas for the IK math), you can easily adapt and change this program with the variables at the top. This includes being able to change the lengths between each axis. The motors that I am currently using are MG995 Tower Pro as they are strong yet inexpensive for the power. Right now some of the parts are not CAD files yet because its my first prototype. However if ou want to see what it looks like, I will add some images and a YouTube video with a demo and setting up the arm.
