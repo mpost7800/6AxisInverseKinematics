@@ -52,30 +52,16 @@ void inversekinematics (float x, float y, float z)
   float k1 = l1+l2*cos(res);
   float k2 = l2*sin(res);
   angles[1] = radtodeg*(atan2(z_p,r) - atan2(k2,k1));
-  /*servoangle(0,0,angles[0]);
-  servoangle(1,1,angles[1]);
-  servoangle(2,2,angles[1]);
-  servoangle(3,3,angles[2]);*/
   angles[3] = 45 - angles[1] + angles[2];
-  //servoangle(4,4,angles[3]);
+  servoo[1].write(angles[0]);
+  delay(100);
+  servoo[2].write(angles[1]);
+  delay(100);
+  servoo[3].write(angles[2]);
+  delay(100);
+  servoo[4].write(angles[3]);
+  delay(100);
 }
-/*void servoangle(int servo_number, int channel, float angle)
-{
-    int n = servo_number; //n so that the formulas don't get cluttered with servo_angle everywhere
-    if (angle >= 0 && angle <= 90)
-    {
-      pulse_length = int(float(servo[n][0]+angle*( (servo[n][1]-servo[n][0]) )/90.0));  
-    }    
-    else if(angle > 90 && angle <= 180)
-    {
-      pulse_length = int(float(  servo[n][1] + (angle-90.0) *( (servo[n][2]-servo[n][1]))/90.0 ) );     
-    }
-    else // if (angle <0 && angle>180) //redudant protection just in case
-    {
-      return;
-    }
-    servoo[channel].write(pulse_length);
-}*/
 
 void loop() {
   inversekinematics(3,3,0);
@@ -83,25 +69,11 @@ void loop() {
   Serial.println(angles[1]);
   Serial.println(angles[2]);
   Serial.println(angles[3]);
-  servoo[1].write(angles[0]);
-  delay(100);
-  servoo[2].write(angles[1]);
-  delay(100);
-  servoo[3].write(angles[2]);
-  delay(100);
-  servoo[4].write(angles[3]);
   delay(5000);
   inversekinematics(5,3,0);
   Serial.println(angles[0]);
   Serial.println(angles[1]);
   Serial.println(angles[2]);
   Serial.println(angles[3]);
-  servoo[1].write(angles[0]);
-  delay(100);
-  servoo[2].write(angles[1]);
-  delay(100);
-  servoo[3].write(angles[2]);
-  delay(100);
-  servoo[4].write(angles[3]);
   delay(5090);
 }
